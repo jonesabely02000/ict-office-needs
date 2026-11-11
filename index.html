@@ -1,675 +1,627 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ICT Needs · Office Facilities Request</title>
-  <!-- Font Awesome 5 for icons (optional but nice) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICT & Office Needs Request System</title>
 
-    body {
-      background: linear-gradient(145deg, #eef5fc 0%, #dbeafe 100%);
-      min-height: 100vh;
-      padding: 2rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    .request-card {
-      max-width: 1000px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 2.5rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 30, 60, 0.35);
-      padding: 2.5rem 2.8rem;
-      transition: all 0.2s;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+}
 
-    @media (max-width: 600px) {
-      .request-card {
-        padding: 1.8rem 1.2rem;
-        border-radius: 1.8rem;
-      }
-    }
+body {
+  background: linear-gradient(145deg, #eef5fc, #dbeafe);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    h1 {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-weight: 600;
-      font-size: 2.2rem;
-      color: #0a2b4b;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.25rem;
-    }
+.request-card {
+  max-width: 1000px;
+  width: 100%;
+  background: white;
+  border-radius: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0,30,60,.25);
+  padding: 2.5rem 2.8rem;
+}
 
-    h1 i {
-      color: #1e6f9f;
-      background: #e1effa;
-      padding: 0.6rem;
-      border-radius: 1.2rem;
-      font-size: 1.8rem;
-    }
+h1 {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  font-size: 2.2rem;
+  color: #0a2b4b;
+  margin-bottom: .5rem;
+}
 
-    .subhead {
-      color: #2c5778;
-      font-size: 1.1rem;
-      margin-bottom: 2.2rem;
-      font-weight: 400;
-      border-left: 5px solid #3b8fc2;
-      padding-left: 1.2rem;
-      background: #f0f7fe;
-      border-radius: 0 2rem 2rem 0;
-      line-height: 1.4;
-      padding: 0.8rem 1.2rem;
-    }
+h1 i {
+  color: #1e6f9f;
+  background: #e1effa;
+  padding: .6rem;
+  border-radius: 1rem;
+}
 
-    .role-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem 2.5rem;
-      background: #f3f9ff;
-      padding: 1.2rem 1.8rem;
-      border-radius: 3rem;
-      margin-bottom: 2.2rem;
-      align-items: center;
-    }
+.subhead {
+  color: #2c5778;
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+  border-left: 5px solid #3b8fc2;
+  padding: 1rem;
+  background: #f0f7fe;
+  border-radius: 0 1rem 1rem 0;
+}
 
-    .role-label {
-      font-weight: 600;
-      color: #0f3d5e;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+.role-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  background: #f3f9ff;
+  padding: 1.3rem;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
 
-    .role-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      align-items: center;
-    }
+.role-label {
+  font-weight: 600;
+  color: #0f3d5e;
+}
 
-    .role-options label {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: white;
-      padding: 0.5rem 1.2rem;
-      border-radius: 2rem;
-      box-shadow: 0 2px 6px rgba(0, 50, 80, 0.08);
-      border: 1px solid #cde0f0;
-      cursor: pointer;
-      transition: all 0.1s;
-      font-size: 0.95rem;
-      color: #1d3d5c;
-      font-weight: 500;
-    }
+.role-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+}
 
-    .role-options label:hover {
-      background: #e4f0fa;
-      border-color: #7fb9e0;
-    }
+.role-options label {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: white;
+  padding: .65rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid #cde0f0;
+  cursor: pointer;
+  color: #1d3d5c;
+}
 
-    .role-options input[type="radio"] {
-      accent-color: #1e7bb0;
-      width: 1.1rem;
-      height: 1.1rem;
-      cursor: pointer;
-    }
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: #1e7bb0;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
 
-    /* Facility Grid */
-    .facility-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-      gap: 1rem 1.2rem;
-      margin: 1.5rem 0 2rem 0;
-    }
+.section-title {
+  font-weight: 700;
+  color: #0a2b4b;
+  margin-bottom: 1rem;
+}
 
-    .facility-item {
-      background: #ffffff;
-      border: 1.5px solid #d9e6f2;
-      border-radius: 1.8rem;
-      padding: 0.9rem 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      transition: all 0.15s;
-      box-shadow: 0 4px 10px rgba(0, 40, 70, 0.02);
-      cursor: pointer;
-    }
+.facility-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
 
-    .facility-item:hover {
-      border-color: #7ab3d9;
-      background: #f6fcff;
-      box-shadow: 0 8px 16px rgba(0, 100, 150, 0.08);
-    }
+.facility-item {
+  background: white;
+  border: 1.5px solid #d9e6f2;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  cursor: pointer;
+  transition: .2s;
+}
 
-    .facility-item input[type="checkbox"] {
-      width: 1.3rem;
-      height: 1.3rem;
-      accent-color: #1e7bb0;
-      border-radius: 0.4rem;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
+.facility-item:hover {
+  border-color: #7ab3d9;
+  background: #f6fcff;
+}
 
-    .facility-icon {
-      font-size: 1.6rem;
-      color: #1f6fa0;
-      width: 2rem;
-      text-align: center;
-    }
+.facility-item:has(input:checked) {
+  background: #eaf5ff;
+  border-color: #1e7bb0;
+}
 
-    .facility-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.3;
-    }
+.facility-icon {
+  font-size: 1.5rem;
+  color: #1f6fa0;
+}
 
-    .facility-name {
-      font-weight: 600;
-      color: #10374f;
-      font-size: 0.98rem;
-    }
+.facility-text {
+  display: flex;
+  flex-direction: column;
+}
 
-    .facility-hint {
-      font-size: 0.75rem;
-      color: #5a7e9b;
-      font-weight: 400;
-    }
+.facility-name {
+  font-weight: 600;
+  color: #10374f;
+  font-size: .95rem;
+}
 
-    /* Office & Details section */
-    .details-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem 2rem;
-      margin: 2rem 0 1.8rem 0;
-      background: #f9fcff;
-      padding: 1.6rem 1.8rem;
-      border-radius: 2rem;
-      border: 1px solid #d2e3f2;
-    }
+.facility-hint {
+  font-size: .75rem;
+  color: #5a7e9b;
+}
 
-    .input-group {
-      flex: 1 1 200px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
+.details-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0;
+  background: #f9fcff;
+  padding: 1.6rem;
+  border-radius: 2rem;
+  border: 1px solid #d2e3f2;
+}
 
-    .input-group label {
-      font-weight: 600;
-      color: #165072;
-      font-size: 0.85rem;
-      letter-spacing: 0.3px;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      text-transform: uppercase;
-    }
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
 
-    .input-group input, .input-group select {
-      padding: 0.8rem 1.1rem;
-      border-radius: 2rem;
-      border: 1.5px solid #c2d9ec;
-      background: white;
-      font-size: 0.95rem;
-      transition: 0.15s;
-      outline: none;
-      font-weight: 500;
-      color: #0a2b41;
-    }
+.input-group label,
+.additional-area label {
+  font-weight: 600;
+  color: #165072;
+  font-size: .85rem;
+}
 
-    .input-group input:focus, .input-group select:focus {
-      border-color: #1e7bb0;
-      box-shadow: 0 0 0 4px rgba(30, 123, 176, 0.12);
-    }
+.input-group input {
+  padding: .85rem 1rem;
+  border-radius: 1.5rem;
+  border: 1.5px solid #c2d9ec;
+  background: white;
+  font-size: .95rem;
+  width: 100%;
+}
 
-    .input-group input::placeholder {
-      color: #99b8d0;
-      font-weight: 400;
-    }
+.input-group input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #1e7bb0;
+  box-shadow: 0 0 0 3px rgba(30,123,176,.12);
+}
 
-    /* Additional needs */
-    .additional-area {
-      margin: 1rem 0 2rem 0;
-    }
+.additional-area {
+  margin-bottom: 2rem;
+}
 
-    .additional-area label {
-      font-weight: 600;
-      color: #165072;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.6rem;
-    }
+.additional-area label {
+  display: block;
+  margin-bottom: .7rem;
+}
 
-    .additional-area textarea {
-      width: 100%;
-      padding: 1.2rem 1.4rem;
-      border-radius: 2rem;
-      border: 1.5px solid #c2d9ec;
-      font-size: 0.95rem;
-      resize: vertical;
-      background: white;
-      font-family: inherit;
-      transition: 0.15s;
-    }
+textarea {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 1.5rem;
+  border: 1.5px solid #c2d9ec;
+  resize: vertical;
+  font-size: .95rem;
+  min-height: 100px;
+}
 
-    .additional-area textarea:focus {
-      border-color: #1e7bb0;
-      box-shadow: 0 0 0 4px rgba(30, 123, 176, 0.12);
-      outline: none;
-    }
+.submit-btn {
+  background: #0f3d5e;
+  color: white;
+  border: none;
+  padding: 1.2rem;
+  border-radius: 3rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: .2s;
+}
 
-    /* Submit button */
-    .submit-btn {
-      background: #0f3d5e;
-      color: white;
-      border: none;
-      padding: 1.2rem 2.2rem;
-      border-radius: 3rem;
-      font-weight: 700;
-      font-size: 1.2rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      box-shadow: 0 12px 25px -8px #0f3d5e80;
-      letter-spacing: 0.3px;
-      width: 100%;
-      border: 1px solid #ffffff30;
-    }
+.submit-btn:hover {
+  background: #1b537c;
+}
 
-    .submit-btn i {
-      font-size: 1.3rem;
-    }
+.submit-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
 
-    .submit-btn:hover {
-      background: #1b537c;
-      transform: scale(1.01);
-      box-shadow: 0 18px 30px -8px #0f3d5e;
-    }
+.feedback {
+  display: none;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
 
-    .submit-btn:active {
-      transform: scale(0.99);
-      background: #0b2f48;
-    }
+.feedback.success {
+  display: block;
+  background: #dff0e3;
+  color: #1a5c3a;
+  border: 1px solid #a9d9b8;
+}
 
-    /* message / feedback */
-    .feedback {
-      margin-top: 1.5rem;
-      padding: 0.9rem 1.2rem;
-      border-radius: 3rem;
-      font-weight: 500;
-      display: none;
-      align-items: center;
-      gap: 0.6rem;
-      background: #dff0e3;
-      color: #1a5c3a;
-      border: 1px solid #a9d9b8;
-      font-size: 0.95rem;
-      justify-content: center;
-    }
+.feedback.error {
+  display: block;
+  background: #ffe6e6;
+  color: #a12b2b;
+  border: 1px solid #e6b3b3;
+}
 
-    .feedback.show {
-      display: flex;
-    }
+.small-note {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #537d9c;
+  font-size: .8rem;
+}
 
-    .feedback i {
-      font-size: 1.2rem;
-    }
-
-    .small-note {
-      text-align: center;
-      margin-top: 1.3rem;
-      color: #537d9c;
-      font-size: 0.8rem;
-      display: flex;
-      justify-content: center;
-      gap: 0.4rem;
-      align-items: center;
-    }
-
-    .small-note i {
-      font-size: 0.9rem;
-    }
-
-    /* utility */
-    .icon-spacer {
-      width: 0.2rem;
-    }
-  </style>
+@media(max-width:600px) {
+  .request-card {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+  .facility-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+  .facility-item {
+    padding: .7rem;
+    gap: .5rem;
+  }
+  .facility-icon {
+    font-size: 1.2rem;
+  }
+}
+</style>
 </head>
+
 <body>
 
 <div class="request-card">
-  <h1>
-    <i class="fas fa-clipboard-list"></i>
-    ICT & Office Needs
-  </h1>
-  <div class="subhead">
-    Academic · Technician · Administrator — request facilities for your office
-  </div>
 
-  <!-- Role selector -->
-  <div class="role-section">
-    <span class="role-label"><i class="fas fa-user-tag"></i> I am a:</span>
-    <div class="role-options">
-      <label>
-        <input type="radio" name="role" value="academic" checked> 
-        <i class="fas fa-chalkboard-teacher" style="color:#1f6fa0;"></i> Academic
-      </label>
-      <label>
-        <input type="radio" name="role" value="technician"> 
-        <i class="fas fa-tools" style="color:#1f6fa0;"></i> Technician
-      </label>
-      <label>
-        <input type="radio" name="role" value="administrator"> 
-        <i class="fas fa-user-tie" style="color:#1f6fa0;"></i> Administrator
-      </label>
-    </div>
-  </div>
+<h1>
+<i class="fas fa-clipboard-list"></i>
+ICT & Office Needs
+</h1>
 
-  <!-- Facilities checklist (chairs, PC, laptop, etc.) -->
-  <div style="font-weight: 600; color: #0a2b4b; margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.5rem;">
-    <i class="fas fa-couch" style="color: #1e6f9f;"></i> Select needed facilities:
-  </div>
-  <div class="facility-grid" id="facilityGrid">
-    <!-- Chair -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="Ergonomic chair">
-      <span class="facility-icon"><i class="fas fa-chair"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">Office chair</span>
-        <span class="facility-hint">ergonomic / standard</span>
-      </span>
-    </label>
-    <!-- PC -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="Desktop PC">
-      <span class="facility-icon"><i class="fas fa-desktop"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">Desktop PC</span>
-        <span class="facility-hint">i5 / i7, RAM</span>
-      </span>
-    </label>
-    <!-- Laptop -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="Laptop">
-      <span class="facility-icon"><i class="fas fa-laptop"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">Laptop</span>
-        <span class="facility-hint">Windows / macOS</span>
-      </span>
-    </label>
-    <!-- Monitor -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="Monitor">
-      <span class="facility-icon"><i class="fas fa-tv"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">Monitor</span>
-        <span class="facility-hint">24" / 27" FHD</span>
-      </span>
-    </label>
-    <!-- Printer -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="Printer">
-      <span class="facility-icon"><i class="fas fa-print"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">Printer</span>
-        <span class="facility-hint">laser / inkjet</span>
-      </span>
-    </label>
-    <!-- Keyboard & mouse -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="Keyboard & Mouse">
-      <span class="facility-icon"><i class="fas fa-keyboard"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">Keyboard + mouse</span>
-        <span class="facility-hint">wired / wireless</span>
-      </span>
-    </label>
-    <!-- Desk -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="Office desk">
-      <span class="facility-icon"><i class="fas fa-table"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">Office desk</span>
-        <span class="facility-hint">standing / standard</span>
-      </span>
-    </label>
-    <!-- Network / Wi-Fi -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="Network / Wi-Fi">
-      <span class="facility-icon"><i class="fas fa-wifi"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">Network / Wi-Fi</span>
-        <span class="facility-hint">ethernet / access point</span>
-      </span>
-    </label>
-    <!-- Headset -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="Headset">
-      <span class="facility-icon"><i class="fas fa-headset"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">Headset</span>
-        <span class="facility-hint">with mic</span>
-      </span>
-    </label>
-    <!-- Projector -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="Projector">
-      <span class="facility-icon"><i class="fas fa-video"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">Projector</span>
-        <span class="facility-hint">HD / portable</span>
-      </span>
-    </label>
-    <!-- External storage -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="External HDD / SSD">
-      <span class="facility-icon"><i class="fas fa-hdd"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">External storage</span>
-        <span class="facility-hint">HDD / SSD</span>
-      </span>
-    </label>
-    <!-- UPS -->
-    <label class="facility-item">
-      <input type="checkbox" name="facility" value="UPS">
-      <span class="facility-icon"><i class="fas fa-battery-full"></i></span>
-      <span class="facility-text">
-        <span class="facility-name">UPS</span>
-        <span class="facility-hint">backup power</span>
-      </span>
-    </label>
-  </div>
+<div class="subhead">
+Academic · Technician · Administrator —
+Request facilities for your office
+</div>
 
-  <!-- Office / location & quantity -->
-  <div class="details-section">
-    <div class="input-group">
-      <label><i class="fas fa-building"></i> Office / Room</label>
-      <input type="text" id="officeInput" placeholder="e.g., Room 204, Science Bldg" value="">
-    </div>
-    <div class="input-group">
-      <label><i class="fas fa-user-graduate"></i> Your name</label>
-      <input type="text" id="nameInput" placeholder="Full name" value="">
-    </div>
-    <div class="input-group">
-      <label><i class="fas fa-envelope"></i> Email</label>
-      <input type="email" id="emailInput" placeholder="name@institution.edu" value="">
-    </div>
-  </div>
+<form id="requestForm">
 
-  <!-- Additional comments / other needs -->
-  <div class="additional-area">
-    <label><i class="fas fa-pen"></i> Other needs / specifications</label>
-    <textarea id="otherNeeds" rows="2" placeholder="e.g., software licenses, specific PC specs, installation requests, extra chairs..."></textarea>
-  </div>
+<div class="role-section">
+<span class="role-label">
+<i class="fas fa-user-tag"></i> I am a:
+</span>
 
-  <!-- Submit -->
-  <button class="submit-btn" id="submitBtn">
-    <i class="fas fa-paper-plane"></i> Submit request
-  </button>
+<div class="role-options">
+<label>
+<input type="radio" name="role" value="academic" checked>
+<i class="fas fa-chalkboard-teacher"></i> Academic
+</label>
 
-  <!-- Feedback message -->
-  <div class="feedback" id="feedbackMessage">
-    <i class="fas fa-check-circle"></i> <span id="feedbackText">Your request has been recorded. Thank you!</span>
-  </div>
+<label>
+<input type="radio" name="role" value="technician">
+<i class="fas fa-tools"></i> Technician
+</label>
 
-  <div class="small-note">
-    <i class="fas fa-shield-alt"></i> This information will be sent to the ICT & facilities coordinator.
-  </div>
+<label>
+<input type="radio" name="role" value="administrator">
+<i class="fas fa-user-tie"></i> Administrator
+</label>
+</div>
+</div>
+
+<div class="section-title">
+<i class="fas fa-couch"></i> Select needed facilities:
+</div>
+
+<div class="facility-grid">
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="Ergonomic chair">
+<span class="facility-icon"><i class="fas fa-chair"></i></span>
+<span class="facility-text">
+<span class="facility-name">Office chair</span>
+<span class="facility-hint">ergonomic / standard</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="Desktop PC">
+<span class="facility-icon"><i class="fas fa-desktop"></i></span>
+<span class="facility-text">
+<span class="facility-name">Desktop PC</span>
+<span class="facility-hint">i5 / i7, RAM</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="Laptop">
+<span class="facility-icon"><i class="fas fa-laptop"></i></span>
+<span class="facility-text">
+<span class="facility-name">Laptop</span>
+<span class="facility-hint">Windows / macOS</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="Monitor">
+<span class="facility-icon"><i class="fas fa-tv"></i></span>
+<span class="facility-text">
+<span class="facility-name">Monitor</span>
+<span class="facility-hint">24 / 27 inch FHD</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="Printer">
+<span class="facility-icon"><i class="fas fa-print"></i></span>
+<span class="facility-text">
+<span class="facility-name">Printer</span>
+<span class="facility-hint">laser / inkjet</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="Keyboard & Mouse">
+<span class="facility-icon"><i class="fas fa-keyboard"></i></span>
+<span class="facility-text">
+<span class="facility-name">Keyboard + mouse</span>
+<span class="facility-hint">wired / wireless</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="Office desk">
+<span class="facility-icon"><i class="fas fa-table"></i></span>
+<span class="facility-text">
+<span class="facility-name">Office desk</span>
+<span class="facility-hint">standing / standard</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="Network / Wi-Fi">
+<span class="facility-icon"><i class="fas fa-wifi"></i></span>
+<span class="facility-text">
+<span class="facility-name">Network / Wi-Fi</span>
+<span class="facility-hint">ethernet / access point</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="Headset">
+<span class="facility-icon"><i class="fas fa-headset"></i></span>
+<span class="facility-text">
+<span class="facility-name">Headset</span>
+<span class="facility-hint">with microphone</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="Projector">
+<span class="facility-icon"><i class="fas fa-video"></i></span>
+<span class="facility-text">
+<span class="facility-name">Projector</span>
+<span class="facility-hint">HD / portable</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="External HDD / SSD">
+<span class="facility-icon"><i class="fas fa-hdd"></i></span>
+<span class="facility-text">
+<span class="facility-name">External storage</span>
+<span class="facility-hint">HDD / SSD</span>
+</span>
+</label>
+
+<label class="facility-item">
+<input type="checkbox" name="facility" value="UPS">
+<span class="facility-icon"><i class="fas fa-battery-full"></i></span>
+<span class="facility-text">
+<span class="facility-name">UPS</span>
+<span class="facility-hint">backup power</span>
+</span>
+</label>
+
+</div>
+
+<div class="details-section">
+
+<div class="input-group">
+<label for="officeInput">
+<i class="fas fa-building"></i> Office / Room
+</label>
+<input type="text" id="officeInput"
+placeholder="e.g., Room 204, Science Bldg"
+required maxlength="150">
+</div>
+
+<div class="input-group">
+<label for="nameInput">
+<i class="fas fa-user"></i> Your name
+</label>
+<input type="text" id="nameInput"
+placeholder="Full name"
+required maxlength="150">
+</div>
+
+<div class="input-group">
+<label for="emailInput">
+<i class="fas fa-envelope"></i> Email
+</label>
+<input type="email" id="emailInput"
+placeholder="name@institution.edu"
+required maxlength="254">
+</div>
+
+</div>
+
+<div class="additional-area">
+<label for="otherNeeds">
+<i class="fas fa-pen"></i> Other needs / specifications
+</label>
+
+<textarea id="otherNeeds"
+placeholder="e.g., software licenses, PC specifications, installation requests, extra chairs..."
+maxlength="3000"></textarea>
+</div>
+
+<button type="submit" class="submit-btn" id="submitBtn">
+<i class="fas fa-paper-plane"></i>
+<span id="submitText">Submit request</span>
+</button>
+
+<div class="feedback" id="feedbackMessage" role="status" aria-live="polite"></div>
+
+<div class="small-note">
+<i class="fas fa-shield-alt"></i>
+This information will be sent to the ICT & facilities coordinator.
+</div>
+
+</form>
 </div>
 
 <script>
-  (function() {
-    const submitBtn = document.getElementById('submitBtn');
-    const feedbackDiv = document.getElementById('feedbackMessage');
-    const feedbackText = document.getElementById('feedbackText');
-    const facilityGrid = document.getElementById('facilityGrid');
-    const officeInput = document.getElementById('officeInput');
-    const nameInput = document.getElementById('nameInput');
-    const emailInput = document.getElementById('emailInput');
-    const otherNeeds = document.getElementById('otherNeeds');
 
-    // Helper to get selected role
-    function getSelectedRole() {
-      const roles = document.getElementsByName('role');
-      for (let role of roles) {
-        if (role.checked) return role.value;
-      }
-      return 'academic'; // fallback
-    }
+// GOOGLE APPS SCRIPT WEB APP URL
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzixoM3-578b0ESQCS_CAjB--7HlvTlEnd0QsAfiwBzaisb-1cMqbZjIUzKU7etIguvSw/exec";
 
-    // Helper: gather selected facilities
-    function getSelectedFacilities() {
-      const checkboxes = document.querySelectorAll('input[name="facility"]:checked');
-      const selected = [];
-      checkboxes.forEach(cb => selected.push(cb.value));
-      return selected;
-    }
+const form = document.getElementById("requestForm");
+const submitBtn = document.getElementById("submitBtn");
+const submitText = document.getElementById("submitText");
+const feedback = document.getElementById("feedbackMessage");
 
-    // Show feedback message with custom text & color (green success)
-    function showFeedback(message, isSuccess = true) {
-      feedbackDiv.style.display = 'flex';
-      feedbackText.textContent = message;
-      if (isSuccess) {
-        feedbackDiv.style.background = '#dff0e3';
-        feedbackDiv.style.color = '#1a5c3a';
-        feedbackDiv.style.borderColor = '#a9d9b8';
-      } else {
-        feedbackDiv.style.background = '#ffe6e6';
-        feedbackDiv.style.color = '#a12b2b';
-        feedbackDiv.style.borderColor = '#e6b3b3';
-      }
-      // Auto hide after 6 seconds
-      setTimeout(() => {
-        feedbackDiv.style.display = 'none';
-      }, 6000);
-    }
+function showFeedback(message, type) {
+  feedback.textContent = message;
+  feedback.className = "feedback " + type;
+  feedback.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+}
 
-    // Reset feedback display if any action
-    function clearFeedback() {
-      feedbackDiv.style.display = 'none';
-    }
+form.addEventListener("submit", async function(event) {
 
-    // Submit handler
-    submitBtn.addEventListener('click', function(e) {
-      e.preventDefault();
+  event.preventDefault();
 
-      // Basic validation
-      const office = officeInput.value.trim();
-      const name = nameInput.value.trim();
-      const email = emailInput.value.trim();
-      const role = getSelectedRole();
-      const facilities = getSelectedFacilities();
-      const other = otherNeeds.value.trim();
+  const name =
+    document.getElementById("nameInput").value.trim();
 
-      // validation: office, name, email required
-      if (!office) {
-        showFeedback('Please enter your office or room number.', false);
-        officeInput.focus();
-        return;
-      }
-      if (!name) {
-        showFeedback('Please provide your full name.', false);
-        nameInput.focus();
-        return;
-      }
-      if (!email) {
-        showFeedback('Please enter your email address.', false);
-        emailInput.focus();
-        return;
-      }
-      if (!email.includes('@') || !email.includes('.')) {
-        showFeedback('Please enter a valid email address.', false);
-        emailInput.focus();
-        return;
-      }
-      if (facilities.length === 0 && !other) {
-        showFeedback('Please select at least one facility or describe your need in "Other needs".', false);
-        return;
-      }
+  const email =
+    document.getElementById("emailInput").value.trim();
 
-      // Build a summary (for demo: we show a success message and log details)
-      const summary = `Role: ${role} | Office: ${office} | Items: ${facilities.length ? facilities.join(', ') : '—'}${other ? ' | Additional: ' + other : ''}`;
-      
-      // In a real scenario, you would send this to a server.
-      console.log('📋 New request:', {
-        role,
-        office,
-        name,
-        email,
-        facilities,
-        otherNeeds: other,
-        timestamp: new Date().toISOString()
-      });
+  const office =
+    document.getElementById("officeInput").value.trim();
 
-      // Show success message with details (short)
-      let successMsg = `✅ Request submitted! (${facilities.length} item${facilities.length !== 1 ? 's' : ''})`;
-      if (facilities.length === 0) successMsg = `✅ Request submitted (custom needs)`;
-      
-      showFeedback(successMsg, true);
+  const otherNeeds =
+    document.getElementById("otherNeeds").value.trim();
 
-      // Optionally reset form? Let's keep it, but we could reset after. 
-      // But we keep values to avoid frustration. Or reset checkboxes? 
-      // We'll not reset to allow tweaking. But we could clear only feedback.
-      
-      // Optional: scroll to feedback
-      feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  const role =
+    document.querySelector('input[name="role"]:checked').value;
+
+  const facilities =
+    Array.from(
+      document.querySelectorAll(
+        'input[name="facility"]:checked'
+      )
+    ).map(item => item.value);
+
+  if (!name || !email || !office) {
+    showFeedback(
+      "Please complete your name, email and office.",
+      "error"
+    );
+    return;
+  }
+
+  if (facilities.length === 0 && !otherNeeds) {
+    showFeedback(
+      "Please select at least one facility or describe your needs.",
+      "error"
+    );
+    return;
+  }
+
+  const requestData = {
+    name: name,
+    email: email,
+    role: role,
+    office: office,
+    facilities: facilities,
+    otherNeeds: otherNeeds
+  };
+
+  submitBtn.disabled = true;
+  submitText.textContent = "Sending request...";
+  feedback.className = "feedback";
+  feedback.textContent = "";
+
+  try {
+
+    // Apps Script web apps may not provide CORS
+    // headers to browser-based requests.
+    // no-cors sends the request but does not
+    // allow the browser to read the response.
+
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain"
+      },
+      body: JSON.stringify(requestData)
     });
 
-    // Clear feedback when user interacts with any input
-    const allInputs = document.querySelectorAll('input, textarea, select');
-    allInputs.forEach(input => {
-      input.addEventListener('input', clearFeedback);
-      input.addEventListener('change', clearFeedback);
-    });
+    // This confirms that fetch completed,
+    // NOT that Google Sheets saved the data.
+    showFeedback(
+      "Request sent. Please confirm that it was recorded with the ICT coordinator.",
+      "success"
+    );
 
-    // Also clear when clicking a checkbox or radio
-    document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => {
-      el.addEventListener('change', clearFeedback);
-    });
+    // Keep form values so the user can retry
+    // if the request was not recorded.
 
-    // Prefill office example only for demonstration (optional)
-    // officeInput.value = "Room 310, Engineering Hall"; // uncomment if desired
-  })();
+  } catch (error) {
+
+    console.error("Submission error:", error);
+
+    showFeedback(
+      "Unable to send your request. Check your connection and try again.",
+      "error"
+    );
+
+  } finally {
+
+    submitBtn.disabled = false;
+    submitText.textContent = "Submit request";
+
+  }
+
+});
+
 </script>
 
 </body>
